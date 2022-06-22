@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>OAuth-Keycloak</id>
+    <version>1.0.0</version>
+    <authors>OAuth-Keycloak</authors>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework="net6.0">
+        <dependency id="Http" version="1.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\PC\source\repos\Trellis\OAuth-Keycloak\bin\Debug\net6.0\OAuth-Keycloak.dll" target="lib\net6.0\OAuth-Keycloak.dll" />
+  </files>
+</package>

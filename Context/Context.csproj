@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Version>1.0.0</Version>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Util\Util.csproj" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.4" />
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.10.0" />
+    </ItemGroup>
+
+</Project>

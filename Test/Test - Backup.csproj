@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <EnableUnsafeBinaryFormatterSerialization>true</EnableUnsafeBinaryFormatterSerialization>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Autofac.Extras.DynamicProxy" Version="6.0.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.4" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.2" />
+      
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\..\Desktop\Boilerplate\Trellis\Cache\Cache.csproj" />
+        <ProjectReference Include="..\..\..\..\Desktop\Boilerplate\Trellis\Data-Sql\DataSql.csproj" />
+        <ProjectReference Include="..\..\..\..\Desktop\Boilerplate\Trellis\OAuth-Keycloak\OAuth-Keycloak.csproj" />
+        <ProjectReference Include="..\OAuth-Keycloak\OAuth-Keycloak.csproj" />
+    </ItemGroup>
+
+</Project>
