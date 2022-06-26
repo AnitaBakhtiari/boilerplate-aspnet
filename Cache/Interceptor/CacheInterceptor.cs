@@ -27,7 +27,7 @@ public class CacheInterceptor : IInterceptor
             var cacheKeyParams = cacheAttribute.Key;
 
             var builder = new StringBuilder();
-            var methodInfo = builder.Append($"{serviceMethod.ReflectedType.Name}-{serviceMethod.Name}");
+            var methodInfo = builder.Append($"{serviceMethod.ReflectedType!.Name}-{serviceMethod.Name}");
 
             if (string.IsNullOrEmpty(cacheKeyParams))
             {
