@@ -18,7 +18,7 @@ public static partial class ServicesCall
     {
         //var service = Container!.Resolve(action);
         var services = _scope?.ServiceProvider.GetServices(action.IsInterface ? action : action.DumpInterface().First());
-        var service = services.FirstOrDefault(a => a.GetType() == action);
+        var service = services!.FirstOrDefault(a => a!.GetType() == action);
         if (service == null) throw new InvalidOperationException();
         return service;
     }
