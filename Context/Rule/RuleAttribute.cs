@@ -58,8 +58,10 @@ public class RuleAttribute : ValidationAttribute
                         type.GetMethod(nameof(ConstraintRule<IPayload>.Condition))!.Invoke(rule, new[] {value})!;
                     if (!(bool) constraintCondition) continue;
                     var messageResult =
+
                         type.GetMethod(nameof(ConstraintRule<IPayload>.GetMessage))!.Invoke(rule, new object[] { });
                     if (messageResult != null)
+
                         new BadRequestException(localizationService[messageResult.ToString()!]);
                 }
             }

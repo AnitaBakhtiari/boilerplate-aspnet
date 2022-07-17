@@ -34,4 +34,34 @@ public static class HttpContextAccessorExtension
         var token = handler.ReadToken(tokenContext.Replace("Bearer ", "")) as JwtSecurityToken;
         return token?.Claims.FirstOrDefault(claim => claim.Type == value)!.Value!;
     }
+
+    public static string GetUserId(this HttpContext accessor)
+    {
+        var context = accessor!.Request.Headers["Authorization"].ToString();
+        var handler = new JwtSecurityTokenHandler();
+        var token = handler.ReadToken(context.Replace("Bearer ", "")) as JwtSecurityToken;
+        return token?.Claims.FirstOrDefault(claim => claim.Type == "sub")!.Value!;
+    }
+
+    public static string GetUserName(this HttpContext accessor)
+    {
+        return accessor!.User.Claims.FirstOrDefault(c => c.Type == "preferred_username")?.Value!;
+    }
+
+    public static string GetHierarchyId(this HttpContext accessor)
+    {
+        var tokenContext = accessor!.Request.Headers["Authorization"].ToString();
+        var handler = new JwtSecurityTokenHandler();
+        var token = handler.ReadToken(tokenContext.Replace("Bearer ", "")) as JwtSecurityToken;
+        return token?.Claims.FirstOrDefault(claim => claim.Type == "hierarchyId")!.Value!;
+    }
+
+
+    public static string GetTokenValue(this HttpContext accessor, string value)
+    {
+        var tokenContext = accessor!.Request.Headers["Authorization"].ToString();
+        var handler = new JwtSecurityTokenHandler();
+        var token = handler.ReadToken(tokenContext.Replace("Bearer ", "")) as JwtSecurityToken;
+        return token?.Claims.FirstOrDefault(claim => claim.Type == value)!.Value!;
+    }
 }
