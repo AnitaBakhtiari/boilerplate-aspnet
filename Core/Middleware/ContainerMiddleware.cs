@@ -16,7 +16,7 @@ public class ContainerMiddleware
         _serviceProvider = serviceProvider;
     }
 
-    public Task Invoke(HttpContext httpContext)
+    public async Task Invoke(HttpContext httpContext)
     {
         //AutoFac
         //var scope = ConfigureConfig.Configure().BeginLifetimeScope();
@@ -29,8 +29,7 @@ public class ContainerMiddleware
         _next(httpContext);
 
         //scope.Dispose();
-
-       return Task.CompletedTask;
+        //return Task.CompletedTask;
     }
 }
 

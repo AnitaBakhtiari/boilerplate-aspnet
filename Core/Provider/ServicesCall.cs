@@ -39,6 +39,14 @@ public static partial class ServicesCall
         return (T)service;
     }
 
+    public static void Call<TService>()
+    {
+        var service = GetService(typeof(TService));
+        var result = service.GetType().GetMethod(Execute)?.Invoke(service, null);
+        if (result is null) throw new InvalidOperationException();
+    }
+
+
     public static TOutput Call<TService, TOutput>()
     {
         var service = GetService(typeof(TService));

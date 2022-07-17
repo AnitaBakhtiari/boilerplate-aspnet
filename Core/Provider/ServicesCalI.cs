@@ -2,7 +2,17 @@
 
 public static partial class ServicesCall
 {
-    public static  Task<TOutput> CallAsync<TService, TOutput>()
+    public static Task CallAsync<TService>()
+    {
+        var service = GetService(typeof(TService));
+        var result = service.GetType().GetMethod(Execute)?.Invoke(service, null);
+          if (result is null) throw new InvalidOperationException();
+
+        return Task.FromResult(result);
+    }
+
+
+    public static Task<TOutput> CallAsync<TService, TOutput>()
     {
         var service = GetService(typeof(TService));
         if (service.GetType().GetMethod(Execute)?.Invoke(service, null) is not Task<TOutput> result)
@@ -20,10 +30,10 @@ public static partial class ServicesCall
                 param!
             }) is not Task<TOutput> result) throw new InvalidOperationException();
 
-        return  Task.FromResult(result.Result);
+        return Task.FromResult(result.Result);
     }
 
-    public static  Task<TOutput> CallAsync<TService, TOutput, TIn1, TIn2>(TIn1 param1, TIn2 param2)
+    public static Task<TOutput> CallAsync<TService, TOutput, TIn1, TIn2>(TIn1 param1, TIn2 param2)
     {
         var service = GetService(typeof(TService));
         if (service.GetType().GetMethod(Execute)?.Invoke(service, new object[]
@@ -31,10 +41,10 @@ public static partial class ServicesCall
                 param1!, param2!
             }) is not Task<TOutput> result) throw new InvalidOperationException();
 
-        return Task.FromResult(result.Result);     
+        return Task.FromResult(result.Result);
     }
 
-    public static  Task<TOutput> CallAsync<TService, TOutput, TIn1, TIn2, TIn3>(TIn1 param1, TIn2 param2,
+    public static Task<TOutput> CallAsync<TService, TOutput, TIn1, TIn2, TIn3>(TIn1 param1, TIn2 param2,
         TIn3 param3)
     {
         var service = GetService(typeof(TService));
@@ -46,7 +56,7 @@ public static partial class ServicesCall
         return Task.FromResult(result.Result);
     }
 
-    public static  Task<TOutput> CallAsync<TService, TOutput, TIn1, TIn2, TIn3, TIn4>(TIn1 param1, TIn2 param2,
+    public static Task<TOutput> CallAsync<TService, TOutput, TIn1, TIn2, TIn3, TIn4>(TIn1 param1, TIn2 param2,
         TIn3 param3,
         TIn4 param4)
     {
@@ -59,7 +69,7 @@ public static partial class ServicesCall
         return Task.FromResult(result.Result);
     }
 
-    public static  Task<TOutput> CallAsync<TService, TOutput, TIn1, TIn2, TIn3, TIn4, TIn5>(TIn1 param1,
+    public static Task<TOutput> CallAsync<TService, TOutput, TIn1, TIn2, TIn3, TIn4, TIn5>(TIn1 param1,
         TIn2 param2,
         TIn3 param3, TIn4 param4, TIn5 param5)
     {
@@ -72,7 +82,7 @@ public static partial class ServicesCall
         return Task.FromResult(result.Result);
     }
 
-    public static  Task<TOutput> CallAsync<TService, TOutput, TIn1, TIn2, TIn3, TIn4, TIn5, TIn6>(TIn1 param1,
+    public static Task<TOutput> CallAsync<TService, TOutput, TIn1, TIn2, TIn3, TIn4, TIn5, TIn6>(TIn1 param1,
         TIn2 param2,
         TIn3 param3, TIn4 param4, TIn5 param5, TIn6 param6)
     {
@@ -85,7 +95,7 @@ public static partial class ServicesCall
         return Task.FromResult(result.Result);
     }
 
-    public static  Task<TOutput> CallAsync<TService, TOutput, TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7>(
+    public static Task<TOutput> CallAsync<TService, TOutput, TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7>(
         TIn1 param1, TIn2 param2,
         TIn3 param3, TIn4 param4, TIn5 param5, TIn6 param6, TIn7 param7)
     {
@@ -98,7 +108,7 @@ public static partial class ServicesCall
         return Task.FromResult(result.Result);
     }
 
-    public static  Task<TOutput> CallAsync<TService, TOutput, TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8>(
+    public static Task<TOutput> CallAsync<TService, TOutput, TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8>(
         TIn1 param1,
         TIn2 param2, TIn3 param3, TIn4 param4, TIn5 param5, TIn6 param6, TIn7 param7, TIn8 param8)
     {
@@ -111,7 +121,7 @@ public static partial class ServicesCall
         return Task.FromResult(result.Result);
     }
 
-    public static  Task<TOutput>
+    public static Task<TOutput>
         CallAsync<TService, TOutput, TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9>(TIn1 param1,
             TIn2 param2, TIn3 param3, TIn4 param4, TIn5 param5, TIn6 param6, TIn7 param7, TIn8 param8, TIn9 param9)
     {
@@ -124,7 +134,7 @@ public static partial class ServicesCall
         return Task.FromResult(result.Result);
     }
 
-    public static  Task<TOutput> CallAsync<TService, TOutput, TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9,
+    public static Task<TOutput> CallAsync<TService, TOutput, TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9,
         TIn10>(
         TIn1 param1, TIn2 param2, TIn3 param3, TIn4 param4, TIn5 param5, TIn6 param6, TIn7 param7, TIn8 param8,
         TIn9 param9, TIn10 param10)
